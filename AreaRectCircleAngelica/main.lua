@@ -76,6 +76,8 @@ areaTextCircle.anchorY = 0
 areaTextCircle.x = 20
 areaTextCircle.y = display.contentHeight/3
 
+
+
 -- Anchor the text and set its (x,y) position
 areaTextRectangle.anchorX = 0
 areaTextRectangle.anchorY = 0
