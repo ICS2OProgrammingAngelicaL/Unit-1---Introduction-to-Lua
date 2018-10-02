@@ -2,7 +2,7 @@
 -- Title : MovingImages
 -- Name : Angelica L
 -- Course : ICS20/3C
--- This program....
+-- This program displays and moves objects on the screen
 -----------------------------------------------------------------------------------------
 
 -- Create variables
@@ -10,21 +10,23 @@
 --Background image with width and height
 local backgroundImage = display.newImageRect("Images/background.png", 2048,1536)
 -- Character image with width and height
-local beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
+local GrilledCheese = display.newImageRect("Images/GrilledCheese.png", 300, 300)
 -- Global variables
 scrollSpeed = 3
+--  BongoCat Image
+local BongoCat = display.newImageRect("Images/BongoCat.png", 400, 400)
 -----------------------------------------------------------------------------------------
 -- Create function 
 
--- Function: MoveShip
+-- Function: MoveCheese
 -- Input: this function accepts am event listener
 -- Output: none
--- Description: this function adds the scroll speed to the x-value of the ship
-local function MoveShip( event )
-	-- Add the scroll speed to the x-value of the ship
-	beetleship.x = beetleship.x + scrollSpeed
-	-- Change the transparency of the ship every time it moves so that it fades out
-	beetleship.alpha = beetleship.alpha + 0.01
+-- Description: this function adds the scroll speed to the x-value of the sandwich
+local function MoveCheese( event )
+	-- Add the scroll speed to the x-value of the sandwich
+	GrilledCheese.x = GrilledCheese.x + scrollSpeed
+	-- Change the transparency of the sandwich every time it moves so that it fades out
+	GrilledCheese.alpha = GrilledCheese.alpha + 0.01
 end
 
 ---------------------------------------------------------------------------------------
@@ -33,14 +35,18 @@ end
 display.setStatusBar(display.HiddenStatusBar)
 
 -- Changes the direction the beetleship is facing
-beetleship:scale(-1,1)
+GrilledCheese:scale(-1,1)
 
 -- Set the image to be transparent
-beetleship.alpha = 0
+GrilledCheese.alpha = 0
 
--- Set the initial x and y position of beetleship
-beetleship.x = 0
-beetleship.y = display.contentHeight/3
+-- Set the initial x and y position of Ship
+GrilledCheese.x = 0
+GrilledCheese.y = display.contentHeight *2/6
 
 -- MoveShip will be called over and over again
-Runtime:addEventListener("enterFrame", MoveShip)
+Runtime:addEventListener("enterFrame", MoveCheese)
+
+-- BongoCat's coordinates
+BongoCat.x = 840
+BongoCat.y = display.contentHeight *8/9
