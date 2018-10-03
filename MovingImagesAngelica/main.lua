@@ -13,13 +13,13 @@ local backgroundImage = display.newImageRect("Images/background.png", 2048,1536)
 local GrilledCheese = display.newImageRect("Images/GrilledCheese.png", 300, 300)
 -- Global variables
 scrollSpeed = 3
---  BongoCat Image
-local BongoCat = display.newImageRect("Images/BongoCat.png", 400, 400)
+--  Girl5 Image
+local Girl = display.newImageRect("Images/girl5.png", 400, 400)
 -----------------------------------------------------------------------------------------
 -- Create function 
 
 -- Function: MoveCheese
--- Input: this function accepts am event listener
+-- Input: this function accepts an event listener
 -- Output: none
 -- Description: this function adds the scroll speed to the x-value of the sandwich
 local function MoveCheese( event )
@@ -29,6 +29,14 @@ local function MoveCheese( event )
 	GrilledCheese.alpha = GrilledCheese.alpha + 0.01
 end
 
+-- Function: MoveGirl
+-- Input: this function accepts an event listener
+-- Output: none
+-- Description: this function adds the scroll speed to the x-value of the girl
+local function MoveGirl( event )
+	-- Add the scroll speed to the x-value of the girl
+	Girl.x = Girl.x - scrollSpeed
+end
 ---------------------------------------------------------------------------------------
 
 -- Hide the status bar
@@ -45,8 +53,8 @@ GrilledCheese.x = 0
 GrilledCheese.y = display.contentHeight *2/6
 
 -- MoveShip will be called over and over again
-Runtime:addEventListener("enterFrame", MoveCheese)
+Runtime:addEventListener("enterFrame", MoveCheese, MoveGirl)
 
--- BongoCat's coordinates
-BongoCat.x = 840
-BongoCat.y = display.contentHeight *8/9
+-- Girl's coordinates
+Girl.x = 840
+Girl.y = display.contentHeight *8/10
