@@ -1,7 +1,10 @@
 -----------------------------------------------------------------------------------------
---
--- main.lua
---
+-- Title : TouchDrag
+-- Name : Angelica L
+-- Course : ICS20/3C
+-- This programn images that the user can interact with
 -----------------------------------------------------------------------------------------
 
--- Your code here
+-- Local variables
+local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
+local sandwich = display.newImageRect("Images/GrilledCheese", 150, 150)
