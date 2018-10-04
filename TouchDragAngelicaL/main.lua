@@ -7,4 +7,4 @@
 
 -- Local variables
 local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
-local sandwich = display.newImageRect("Images/GrilledCheese", 150, 150)
+local sandwich = display.newImageRect("Images/healthheart.png", 150, 150)
