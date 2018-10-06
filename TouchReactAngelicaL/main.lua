@@ -74,11 +74,10 @@ local function BlueButtonListener(touch)
 	end
 end
 
-
 -- Function: RedButtonListener
 -- Input: touch listener
 -- Output: none
--- Description: 
+-- Description: Returns the screen back to its original state when the button is not pressed
 local function RedButtonListener(touch)
 	if (touch.phase == "ended") then
 		blueButton.isVisible = true
