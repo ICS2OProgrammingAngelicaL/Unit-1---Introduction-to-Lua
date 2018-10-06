@@ -41,10 +41,10 @@ redButton.y = display.contentHeight/2
 redButton.isVisible = false
 
 -- Creates text object
-local textObject = display.newText ("Clicked!", 0, 0, nil, 50)
-textObject.x = display.contentHeight/3
-textObject.y = display.contentWidth/2
-textObject:setTextColor (1, 1, 0)
+local textObject = display.newText ("Clicked!", 7, 7, nil, 100)
+textObject.x = display.contentWidth *2/5
+textObject.y = display.contentHeight *1/3
+textObject:setTextColor (1, 0, 0)
 textObject.isVisible = false
 
 -- create local functions
