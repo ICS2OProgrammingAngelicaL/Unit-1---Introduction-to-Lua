@@ -84,6 +84,9 @@ local function NumericFieldListener( event )
 			incorrect.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
 		end
+
+		-- Clear text field
+		event.target.text = ""
 	end
 end
 

@@ -7,6 +7,10 @@
 -- print "Hello, World" to the command terminal
 print ("Oui oui, mon ami, je m'appelle Lafayette!")
 
+-- Sounds
+-- local backgroundMusic = audio.loadSound("Elevator.mp3")
+-- local backgroundMusicChannel
+
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
@@ -32,3 +36,11 @@ textObjectSignature = display.newText(" Created By: Angelica L", 400, 350, nil, 
 
 -- sets the colour of the text object signature\
 textObjectSignature:setTextColor(0)
+
+--------------------------------------------------------------------------------------------
+
+-- Sounds
+local backgroundMusic = audio.loadSound("Sound/Elevator.mp3")
+local backgroundMusicChannel
+
+backgroundMusicChannel = audio.play(backgroundMusic) 
