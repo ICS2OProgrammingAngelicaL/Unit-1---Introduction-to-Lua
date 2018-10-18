@@ -29,7 +29,7 @@ local randomOperator
 
 local function AskQuestion()
 	-- Generate 2 random numbers between a max. and a min. number
-	randomNumber1 = math.random(0,10)
+	randomNumber1 = math.random(10,20)
 	randomNumber2 = math.random(0,10)
 	randomOperator = math.random(1,3)
 
@@ -56,7 +56,6 @@ end
 local function HideCorrect()
 	correctObject.isVisible = false
 	AskQuestion()
-	correct.isVisible = false
 	incorrect.isVisible = false
 end
 
@@ -77,7 +76,6 @@ local function NumericFieldListener( event )
 		-- If the users answer and the correct amswer are the same
 		if ( userAnswer == correctAnswer ) then
 			correctObject.isVisible = true
-			correct.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
 
 		else
@@ -94,23 +92,21 @@ end
 -- Object creation
 
 -- Displays a question and sets the colour
-questionObject = display.newText("", display.contentWidth/3, display.contentHeight/2, nil, 50)
+questionObject = display.newText("", display.contentWidth/2, display.contentHeight/2, nil, 100)
 questionObject:setTextColor(1)
 
--- Displays "Correct" or "Incorrect"
-correct = display.newText("Correct :)", display.contentWidth/6, display.contentHeight/2, nil, 50)
-correct.isVisible = false
 
-incorrect = display.newText("Incorrect :(", display.contentWidth/2, display.contentHeight/6, nil, 50)
+incorrect = display.newText("Incorrect :(", display.contentWidth/2, display.contentHeight *2.5/7, nil, 75)
+incorrect:setTextColor(1,0,0)
 incorrect.isVisible = false
 
 -- Create the correct text object and make it invisible
-correctObject = display.newText("Correct", display.contentWidth/2, display.contentHeight/2, 150, 80)
-correctObject:setTextColor(1)
+correctObject = display.newText("Correct :)", display.contentWidth/2, display.contentHeight *2/7, nil, 75)
+correctObject:setTextColor(0,1,0)
 correctObject.isVisible = false
 
 -- Create numeric field
-numericField = native.newTextField( display.contentWidth/2, display.contentHeight/2, 150, 80 )
+numericField = native.newTextField( display.contentWidth/2, display.contentHeight *2.5/3, 800, 80 )
 numericField.inputType = "number"
 
 -- add the event listener for the numeric field
