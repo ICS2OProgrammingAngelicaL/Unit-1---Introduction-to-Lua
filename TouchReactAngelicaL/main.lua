@@ -8,6 +8,8 @@
 -- Hide status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+local horn = audio.loadSound("Sound/horn.mp3")
+
 -- dets the background colour
 display.setDefault ("background", 204/255, 153/255, 255/255)
 
@@ -62,6 +64,7 @@ local function BlueButtonListener(touch)
 		textObject.isVisible = true
 		bongoCatAct.isVisible = true
 		bongoSlam.isVisible = true
+		local hornChannel = audio.play(horn)
 	end
 
 	if (touch.phase == "ended") then
