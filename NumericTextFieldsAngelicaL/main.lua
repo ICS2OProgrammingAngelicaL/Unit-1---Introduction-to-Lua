@@ -10,6 +10,15 @@
 -- Hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+--Sound
+local correctSound = audio.loadSound("Sound/harp.mp3")
+local correctSoundChannel
+
+local incorrectSound = audio.loadSound("Sound/squeal.mp3")
+local incorrectSoundChannel
+
+local tally = 0
+
 -- Sets the background image/colour
 local background = display.newImageRect("Images/blackmarble.jpg", 3000, 2000)
 
@@ -36,17 +45,16 @@ local function AskQuestion()
 	if (randomOperator == 1) then
 		correctAnswer = randomNumber1 + randomNumber2
 	-- Create the question in text object
-	questionObject.text = randomNumber1 .. "+" .. randomNumber2 .. "="
+		questionObject.text = randomNumber1 .. "+" .. randomNumber2 .. "="
 
 	elseif (randomOperator == 2) then
-		correctAnswer = randomNumber1 - randomNumber2
-		if randomNumber1>randomNumber2 then
+		if (randomNumber2 < randomNumber1) then
+			correctAnswer = randomNumber1 - randomNumber2
+		else
+			correctAnswer = randomNumber2 - randomNumber1
+		end
 		questionObject.text = randomNumber1 .. "-" .. randomNumber2 .. "="
-	else
-		AskQuestion()
-	end
-
-	else 
+	else -- (randomOperator == 3)
 		correctAnswer = randomNumber1 * randomNumber2
 		questionObject.text = randomNumber1 .. "x" .. randomNumber2 .. "="
 	end
@@ -77,12 +85,16 @@ local function NumericFieldListener( event )
 		if ( userAnswer == correctAnswer ) then
 			correctObject.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
+			correctSoundChannel = audio.play(correctSound)
+			tally = tally + 1
+			correctTally.text = ("Correct: "..tally)
 
 		else
 
 			correctObject.isVisible = false
 			incorrect.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
+			incorrectSoundChannel = audio.play(incorrectSound)
 		end
 
 		-- Clear text field
@@ -117,3 +129,6 @@ numericField:addEventListener( "userInput", NumericFieldListener )
 
 -- call the function to ask the question
 AskQuestion()
+
+correctTally = display.newText("", display.contentWidth/6, display.contentHeight/6, nil, 50) 
+--correctTally.text = ("Correct: "..tally)

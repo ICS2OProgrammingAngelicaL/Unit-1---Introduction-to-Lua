@@ -44,7 +44,7 @@ redButton.isVisible = false
 local textObject = display.newText ("Clicked!", 7, 7, nil, 100)
 textObject.x = display.contentWidth *2/5
 textObject.y = display.contentHeight *1/3
-textObject:setTextColor (1, 0, 0)
+textObject:setTextColor (0, 0, 1)
 textObject.isVisible = false
 
 -- create local functions
