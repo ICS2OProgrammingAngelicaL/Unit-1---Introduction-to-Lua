@@ -86,6 +86,7 @@ heart4.isVisible = true
 local function StartTimer()
 	-- Create a countdown timer that loops infinitely
 	countDownTimer = timer.performWithDelay( 15000, UpdateTime, 0)
+
 end
 
 -- StartTimer()
