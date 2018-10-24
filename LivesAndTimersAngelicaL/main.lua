@@ -93,6 +93,7 @@ end
 
 local function UpdateTime()
 	-- Decrement the number of seconds
+	StartTimer()
 	secondsLeft = secondsLeft - 1
 
 	--Display the number of seconds left in the clock object
