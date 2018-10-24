@@ -30,8 +30,8 @@ local heart2
 local heart3
 local heart4
 local lives = 4		
-local secondsLeft = 15
-local totalSeconds = 15
+local secondsLeft = 16
+local totalSeconds = 16
 
 
 -- Object creation
@@ -79,44 +79,14 @@ heart4.x = display.contentWidth *4/8
 heart4.y = display.contentHeight *1/7
 heart4.isVisible = true
 
+GameOver = display.newImageRect("Images/GameOver.png",1200,900)
+GameOver.x = display.contentWidth/2
+GameOver.y = display.contentHeight/2
+GameOver.isVisible = false
+
 -----------------------------------------------------------------------------------------
 
 -- Local functions
-
-local function StartTimer()
-	-- Create a countdown timer that loops infinitely
-	countDownTimer = timer.performWithDelay( 15000, UpdateTime, 0)
-
-end
-
--- StartTimer()
-
-local function UpdateTime()
-	-- Decrement the number of seconds
-	StartTimer()
-	secondsLeft = secondsLeft - 1
-
-	--Display the number of seconds left in the clock object
-	clockText.text = "Time: " .. secondsLeft
-
-	if (secondsLeft == 0 ) then
-		-- Reset the number of seconds left
-		secondsLeft = totalSeconds
-		lives = lives - 1
-
-		-- If there are no lives left, play a lose sound, show you a lose image and 
-		-- Cancel the timer and remove the third heart by making it invisible
-		UpdateHearts()
-
-			-- Call the function to ask a new question
-			AskQuestion()
-
-	end
-end
-
-
---	clockText.text = secondsLeft .. ""
-
 
 local function UpdateHearts()
 
@@ -149,15 +119,33 @@ local function UpdateHearts()
 		heart2.isVisible = false
 		heart3.isVisible = false
 		heart4.isVisible = false
+		GameOver.isVisible = true
+	end
+end
+
+local function UpdateTime()
+	-- Decrement the number of seconds
+	secondsLeft = secondsLeft - 1
+
+	--Display the number of seconds left in the clock object
+	clockText.text = "Time: " .. secondsLeft
+
+	if (secondsLeft == 0 ) then
+		-- Reset the number of seconds left
+		secondsLeft = totalSeconds
+		lives = lives - 1
+
+		-- Calls function to update hearts/lives
+		UpdateHearts()
 
 	end
 end
 
--- Function that calls the timer
---local function StartTimer()
+-- Create a countdown timer that loops infinitely
+local function StartTimer()
 	-- Create a countdown timer that loops infinitely
---	countDownTimer = timer.performWithDelay( 1000, UpdateTime, 0)
---end
+	countDownTimer = timer.performWithDelay( 1000, UpdateTime, 0)
+end
 
 local function AskQuestion()
 	-- Generate 2 random numbers between a max. and a min. number
@@ -210,7 +198,7 @@ local function NumericFieldListener( event )
 			timer.performWithDelay(1500, HideCorrect)
 			correctSoundChannel = audio.play(correctSound)
 			tally = tally + 1
-			correctTally.text = ("Correct: "..tally)
+			correctTally.text = ("Correct: ".. tally)
 
 		else
 
@@ -220,6 +208,7 @@ local function NumericFieldListener( event )
 			incorrectSoundChannel = audio.play(incorrectSound)
 			lives = lives - 1
 			UpdateHearts()
+			secondsLeft = 16
 		end
 
 		-- Clear text field
@@ -227,11 +216,12 @@ local function NumericFieldListener( event )
 	end
 end
 
+-- Starts the timer
+StartTimer()
+UpdateTime()
 
 -- add the event listener for the numeric field
 numericField:addEventListener( "userInput", NumericFieldListener )
 
 -- call the function to ask the question
 AskQuestion()
-UpdateTime()
-StartTimer()
