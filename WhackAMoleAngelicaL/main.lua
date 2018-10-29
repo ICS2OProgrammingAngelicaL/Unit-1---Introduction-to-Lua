@@ -19,14 +19,14 @@ bkg.x = 0
 bkg.y = 0
 
 	-- Creating mole
-local mole = display.newImage( "Images/mole.png", 0, 0)
+local duck = display.newImage( "Images/duck.png", 0, 0)
 	-- Setting position
-mole.x = display.contentCenterX
-mole.y = display.contentCenterY
+duck.x = display.contentCenterX
+duck.y = display.contentCenterY
 	-- Scale the mole
-mole:scale(1/3,1/3)
+duck:scale(1/3,1/3)
 	-- Make the mole invisible
-mole.isVisible = false
+duck.isVisible = false
 -----------------------------------------------------------------------------------------
 -- Functions
 -----------------------------------------------------------------------------------------
@@ -34,9 +34,9 @@ mole.isVisible = false
 function PopUp()
 
 		--Random numbers to use as coordinates
-	mole.x = math.random(0, display.contentWidth)
-	mole.y = math.random(0, display.contentHeight)
+	duck.x = math.random(0, display.contentWidth)
+	duck.y = math.random(0, display.contentHeight)
 		-- Makes the mole visible
-	mole.isVisible = true
+	duck.isVisible = true
 		-- Call the hide function
 end
