@@ -95,9 +95,9 @@ local function thirdBall()
 		-- Create the third ball
 	local ball3 = display.newImage("Images/super_ball.png", 0, 0)
 		-- Add to physics
-	physics.addBody( ball3, {density = 9.0, friction = 0.5, bounce = 0.3, radius = 25})
+	physics.addBody( ball3, {density = 9.0, friction = 0.5, bounce = 0.3, radius = 37.5})
 		-- Scale the ball
-	ball3:scale( 2 , 2 )
+	ball3:scale( 1.5 , 1.5 )
 end
 
 -----------------------------------------------------------------------------------------
