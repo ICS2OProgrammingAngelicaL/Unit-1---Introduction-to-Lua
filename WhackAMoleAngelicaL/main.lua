@@ -10,7 +10,7 @@
 display.setStatusBar(display.HiddenStatusBar)
 
 -- Background
-local bkg = display.newRect( 0, 0, display.contentWidth, display.contentHeight)
+local bkg = display.newImageRect( "Images/stars.jpeg", display.contentWidth, display.contentHeight)
 
 	--Setting position
 bkg.anchorX = 0
@@ -27,16 +27,78 @@ duck.y = display.contentCenterY
 duck:scale(1/3,1/3)
 	-- Make the mole invisible
 duck.isVisible = false
+
+-- Tally
+local tally = 0
+
+-- Sound effect
+local quack = audio.loadSound("Sound/quack.mp3")
+local quackSoundChannel 
+
+-- Background music
+local bkgMusic = audio.loadSound("Sound/sexy.mp3")
+local sexySoundChannel
+sexySoundChannel = audio.play(bkgMusic)
 -----------------------------------------------------------------------------------------
 -- Functions
 -----------------------------------------------------------------------------------------
+
+-- Calls the popUp function after 3 seconds
+function PopUpDelay()
+	timer.performWithDelay(3000, PopUp)
+end
+
+function Hide()
+		-- Make mole transparent
+	duck.isVisible = false
+	PopUpDelay()
+end
 
 function PopUp()
 
 		--Random numbers to use as coordinates
 	duck.x = math.random(0, display.contentWidth)
 	duck.y = math.random(0, display.contentHeight)
-		-- Makes the mole visible
+
+	if (duck.x < display.contentWidth/2) then
+		duck.x = math.random(0, display.contentWidth)
+		duck.y = math.random(0, display.contentHeight)
+	end
+	
+		-- Makes the duck visible
 	duck.isVisible = true
 		-- Call the hide function
+	timer.performWithDelay(500, Hide)
 end
+
+function GameStart()
+	PopUpDelay()
+end
+
+function Whack( event )
+	
+		-- If touch phase starts
+	if (event.phase == "began") then
+		tally = tally + 1
+		correctTally.text = ("Correct: "..tally)
+		quackSoundChannel = audio.play(quack)
+	end
+end
+
+-----------------------------------------------------------------------------------------
+-- Event listeners
+-----------------------------------------------------------------------------------------
+
+duck:addEventListener( "touch", Whack)
+-----------------------------------------------------------------------------------------
+-- Object Creation
+-----------------------------------------------------------------------------------------
+
+-- Tally text
+correctTally = display.newText("", display.contentWidth/6, display.contentHeight/6, nil, 50) 
+
+
+-----------------------------------------------------------------------------------------
+-- Start the game
+-----------------------------------------------------------------------------------------
+GameStart()
