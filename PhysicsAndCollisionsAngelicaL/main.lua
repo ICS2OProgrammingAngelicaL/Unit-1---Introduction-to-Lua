@@ -8,6 +8,11 @@
 -- Hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+-- Background music
+local oof = audio.loadSound("Sound/backgroundMusic.mp3")
+local oofSoundChannel
+oofSoundChannel = audio.play(oof)
+
 -----------------------------------------------------------------------------------------
 -- Local variables
 local physics = require("physics")

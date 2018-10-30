@@ -59,6 +59,7 @@ numericField.inputType = "number"
 
 correctTally = display.newText("", display.contentWidth/6, display.contentHeight/6, nil, 50) 
 
+-- Hearts
 heart1 = display.newImageRect("Images/heart.png", 75, 75)
 heart1.x = display.contentWidth *7/8
 heart1.y = display.contentHeight *1/7
@@ -196,7 +197,6 @@ local function NumericFieldListener( event )
 		if ( userAnswer == correctAnswer ) then
 			correctObject.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
-			correctSoundChannel = audio.play(correctSound)
 			tally = tally + 1
 			correctTally.text = ("Correct: ".. tally)
 
@@ -205,7 +205,6 @@ local function NumericFieldListener( event )
 			correctObject.isVisible = false
 			incorrect.isVisible = true
 			timer.performWithDelay(1500, HideCorrect)
-			incorrectSoundChannel = audio.play(incorrectSound)
 			lives = lives - 1
 			UpdateHearts()
 			secondsLeft = 16

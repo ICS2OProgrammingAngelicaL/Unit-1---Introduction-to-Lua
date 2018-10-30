@@ -24,7 +24,7 @@ local duck = display.newImage( "Images/duck.png", 0, 0)
 duck.x = display.contentCenterX
 duck.y = display.contentCenterY
 	-- Scale the mole
-duck:scale(1/3,1/3)
+duck:scale(1/4,1/4)
 	-- Make the mole invisible
 duck.isVisible = false
 
@@ -45,7 +45,7 @@ sexySoundChannel = audio.play(bkgMusic)
 
 -- Calls the popUp function after 3 seconds
 function PopUpDelay()
-	timer.performWithDelay(3000, PopUp)
+	timer.performWithDelay(1850, PopUp)
 end
 
 function Hide()
@@ -59,16 +59,11 @@ function PopUp()
 		--Random numbers to use as coordinates
 	duck.x = math.random(0, display.contentWidth)
 	duck.y = math.random(0, display.contentHeight)
-
-	if (duck.x < display.contentWidth/2) then
-		duck.x = math.random(0, display.contentWidth)
-		duck.y = math.random(0, display.contentHeight)
-	end
 	
 		-- Makes the duck visible
 	duck.isVisible = true
 		-- Call the hide function
-	timer.performWithDelay(500, Hide)
+	timer.performWithDelay(800, Hide)
 end
 
 function GameStart()
@@ -95,8 +90,8 @@ duck:addEventListener( "touch", Whack)
 -----------------------------------------------------------------------------------------
 
 -- Tally text
-correctTally = display.newText("", display.contentWidth/6, display.contentHeight/6, nil, 50) 
-
+correctTally = display.newText("", display.contentWidth/6, display.contentHeight/6, nil, 35) 
+correctTally:setTextColor( 153/255, 51/255, 255/255)
 
 -----------------------------------------------------------------------------------------
 -- Start the game
