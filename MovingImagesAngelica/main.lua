@@ -20,7 +20,7 @@ local Girl = display.newImageRect("Images/girl5.png", 400, 400)
 local Star = display.newImageRect("Images/star.png", 200, 200)
 
 local music = audio.loadSound("Sound/MovingImagesMusic.mp3")
-
+local musicChannel
 local musicChannel = audio.play(music)
 -----------------------------------------------------------------------------------------
 -- Create function 
